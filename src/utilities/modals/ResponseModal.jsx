@@ -1,30 +1,31 @@
-// components/ErrorModal.js
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
-import { clearError } from '../../redux/errorSlice'; // Import the clearError action
+import { clearResponse } from '../../redux/responseSlice'; 
 
-const ErrorModal = () => {
+const ResponseModal = () => {
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.error.message);
+  const { message, type } = useSelector((state) => state.response);
 
   const handleClose = () => {
-    dispatch(clearError()); // Clear the error when closing the modal
+    dispatch(clearResponse()); 
   };
 
   return (
-    <Modal show={!!error} onHide={handleClose}>
+    <Modal show={!!message} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Error</Modal.Title>
+        <Modal.Title>{type}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{error}</Modal.Body>
+      <Modal.Body>{message}</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
+        <Button  variant={type === 'SUCCESS' ? 'success' : 'danger'} 
+          onClick={handleClose}
+        >
+          {type === 'SUCCESS' ? 'Great!' : 'Close'}
         </Button>
       </Modal.Footer>
     </Modal>
   );
 };
 
-export default ErrorModal;
+export default ResponseModal;

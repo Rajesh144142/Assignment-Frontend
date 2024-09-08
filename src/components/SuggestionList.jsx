@@ -1,16 +1,39 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchSuggestions } from "../redux/suggestionSlice"; // Import the fetchSuggestions action
+import { fetchSuggestions } from "../redux/suggestionSlice"; 
 import SuggestionItem from "./SuggestionItem";
+import { ThreeDots } from 'react-loader-spinner'; 
 
- const SuggestionList = () => {
+const SuggestionList = () => {
   const dispatch = useDispatch();
-  const suggestions = useSelector((state) => state.suggestions.suggestions);
+  const { suggestions, loading, error } = useSelector((state) => state.suggestions);
 
   useEffect(() => {
-    // Fetch suggestions when the component mounts
     dispatch(fetchSuggestions());
   }, [dispatch]);
+
+  if (loading) {
+    return (
+      <div className="d-flex flex-column justify-content-center align-items-center vh-100">
+        <ThreeDots
+          visible={loading}
+          height="80"
+          width="80"
+          radius="9"
+          color="#007bff" 
+          ariaLabel="three-dots-loading"
+        />
+        <p className="mt-3">Loading suggestions...</p>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="text-center mt-4">
+        <p>Failed to load suggestions. Please try again later.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-4">
@@ -24,4 +47,5 @@ import SuggestionItem from "./SuggestionItem";
     </div>
   );
 };
+
 export default SuggestionList;

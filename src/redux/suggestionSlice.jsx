@@ -2,17 +2,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import host from "../configuration/apiConfig";
-import { setError } from './errorSlice'; // Import the setError action
+import { setResponse } from './responseSlice'; // Import the setError action
 
 export const fetchSuggestions = createAsyncThunk(
   "suggestions/fetchSuggestions",
   async (_, { dispatch }) => {
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const response = await axios.get(`${host}/api/v1/suggestions/`);
       return response.data;
     } catch (error) {
-      dispatch(setError(error.response?.data?.error || 'Failed to fetch suggestions'));
-      throw error; // Rethrow to propagate the error
+      console.log(error);
+      dispatch(setResponse({ type: 'ERROR', message: error.response?.data?.error || 'Failed to add new suggestion' }));
+      throw error; 
     }
   }
 );
@@ -22,10 +24,11 @@ export const addNewSuggestion = createAsyncThunk(
   async (newSuggestion, { dispatch }) => {
     try {
       const response = await axios.post(`${host}/api/v1/suggestions/`, newSuggestion);
+      dispatch(setResponse({ type: 'SUCCESS', message: 'Suggestion added successfully' }));
       return response.data;
     } catch (error) {
-      dispatch(setError(error.response?.data?.error || 'Failed to add new suggestion'));
-      throw error; // Rethrow to propagate the error
+      dispatch(setResponse({ type: 'ERROR', message: error.response?.data?.error || 'Failed to add new suggestion' }));
+      throw error; 
     }
   }
 );
@@ -35,15 +38,16 @@ export const upvoteSuggestion = createAsyncThunk(
   async (id, { dispatch }) => {
     try {
       const response = await axios.post(`${host}/api/v1/suggestions/${id}/vote`);
+      dispatch(setResponse({ type: 'SUCCESS', message: 'Your vote has been added successfully' }));
       return response.data;
     } catch (error) {
-      dispatch(setError(error.response?.data?.error || 'Failed to upvote suggestion'));
-      throw error; // Rethrow to propagate the error
-    }
+      console.log(error);
+      dispatch(setResponse({ type: 'ERROR', message: error.response?.data?.error || 'Failed to add new suggestion' }));
+      throw error; 
+    } 
   }
 );
 
-// ... (rest of the slice)
 
 
 const suggestionSlice = createSlice({

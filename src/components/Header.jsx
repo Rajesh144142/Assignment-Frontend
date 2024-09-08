@@ -10,7 +10,7 @@ export const Header = () => {
 
   return (
     <div className="d-flex justify-content-between align-items-center my-3">
-      <h1>Suggestion System</h1>
+      <h4>Suggestion System</h4>
       <Button variant="primary" onClick={handleShow}>
         Create New Suggestion
       </Button>
