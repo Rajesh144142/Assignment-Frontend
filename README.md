@@ -1,8 +1,36 @@
-# React + Vite
+# 🎉 Suggestion System 🎉
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and efficient **Suggestion System** built using **React**, **Axios**, **React Bootstrap**, and **Redux Toolkit**. The application is hosted on **AWS Amplify**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
+
+- 📝 **Submit Suggestions**: Add new suggestions with a simple and user-friendly form.
+- 🔥 **Vote on Suggestions**: Upvote suggestions to show your support.
+- 🚀 **Real-Time Updates**: Suggestions and votes update seamlessly in real-time.
+- 🎨 **Responsive Design**: Built using **React Bootstrap** for a sleek and responsive interface.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: 
+  - React ⚛️
+  - Redux Toolkit 🛠️
+  - Axios 🌐
+  - React Bootstrap 🎨
+
+- **Hosting**:
+  - AWS Amplify ☁️
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Rajesh144142/Assignment-Frontend.git
