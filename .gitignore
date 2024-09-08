@@ -23,6 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 node_modules/
+# Environment variables
 .env
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
