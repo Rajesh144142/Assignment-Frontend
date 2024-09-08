@@ -41,7 +41,7 @@ const SuggestionList = () => {
         <p>No suggestions available. Be the first to add one!</p>
       ) : (
         suggestions.map((suggestion) => (
-          <SuggestionItem key={suggestion.id} suggestion={suggestion} />
+          <SuggestionItem key={suggestion?.id} suggestion={suggestion} />
         ))
       )}
     </div>

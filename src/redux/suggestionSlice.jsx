@@ -8,7 +8,7 @@ export const fetchSuggestions = createAsyncThunk(
   "suggestions/fetchSuggestions",
   async (_, { dispatch }) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       const response = await axios.get(`${host}/api/v1/suggestions/`);
       return response.data;
     } catch (error) {

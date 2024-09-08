@@ -19,8 +19,8 @@ import UpVoteModal from "../utilities/modals/upVoteModal";
        <div onClick={handleShow}className="card mb-3 shadow-sm hover-shadow" 
                style={{ cursor: 'pointer' }}>
         <div className="card-body">
-          <h5 className="card-title">Title: {suggestion.title}</h5>
-          <p className="card-text">Votes: {suggestion.votes}</p>
+          <h5 className="card-title">Title: {suggestion?.title}</h5>
+          <p className="card-text">Votes: {suggestion?.votes}</p>
         </div>
       </div>
       <UpVoteModal 
