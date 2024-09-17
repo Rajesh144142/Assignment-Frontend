@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import suggestionReducer from './suggestionSlice';
-import responseReducer from './responseSlice'; // Import the error slice
+import responseReducer from './responseSlice'; 
 
 const store = configureStore({
   reducer: {
     suggestions: suggestionReducer,
-    response: responseReducer, // Add the error slice to the store
+    response: responseReducer, 
   },
 });
 
